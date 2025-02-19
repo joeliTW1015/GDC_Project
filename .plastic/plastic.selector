@@ -1,0 +1,4 @@
+repository "GDC_prototype@NineN_Studio@cloud"
+  path "/"
+    br "/main"
+    co "/main"
