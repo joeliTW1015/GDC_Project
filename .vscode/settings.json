@@ -52,5 +52,5 @@
         "Temp/": true
     },
     "dotnet.preferCSharpExtension": true,
-    "dotnet.defaultSolution": "GDC_prototype.sln"
+    "dotnet.defaultSolution": "GDC_Project.sln"
 }

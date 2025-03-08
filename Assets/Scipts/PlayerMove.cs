@@ -77,7 +77,7 @@ public class PlayerMove : MonoBehaviour
         xIn = Input.GetAxis("Horizontal");
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("jumpCMD");
+            //Debug.Log("jumpCMD");
             jumpCmd = true;
         }
         
@@ -90,13 +90,13 @@ public class PlayerMove : MonoBehaviour
             return;
 
         float targetSpeed = isOnSlope? xIn * maxspeed * slopeSpeedDecrease : xIn * maxspeed;
-        float speedDif = targetSpeed - rb.velocity.x;
+        float speedDif = targetSpeed - rb.linearVelocity.x;
         float accelRate = (Mathf.Abs(targetSpeed) >= 0.01f)? acceleration : decceleration;
         float moveForce = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPow) * Mathf.Sign(speedDif);
         
-        if(targetSpeed == 0 && rb.velocity.x < 0.01f)
+        if(targetSpeed == 0 && rb.linearVelocity.x < 0.01f)
         {
-            rb.velocity = new Vector2(0, rb.velocity.y);
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
            //Debug.Log("set0");
         }
         else
@@ -119,8 +119,8 @@ public class PlayerMove : MonoBehaviour
 
         if(isOnGround && xIn == 0)
         {
-            float frictionForce = Mathf.Min(Mathf.Abs(rb.velocity.magnitude), friction);
-            frictionForce *= Mathf.Sign(rb.velocity.x);
+            float frictionForce = Mathf.Min(Mathf.Abs(rb.linearVelocity.magnitude), friction);
+            frictionForce *= Mathf.Sign(rb.linearVelocity.x);
             rb.AddForce(moveForceDir * -frictionForce, ForceMode2D.Impulse); 
         }
 
@@ -148,18 +148,18 @@ public class PlayerMove : MonoBehaviour
             Debug.Log("Jump");
             lastJumpTime = 0;
             lastGroundTime = 0;
-            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
         
 
         //JumpCut
-        if(rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        if(rb.linearVelocity.y > 0 && !Input.GetKey(KeyCode.Space))
         {
             rb.AddForce(jumpCutValue * Vector2.down, ForceMode2D.Impulse);
         }
         //FallGravity
-        if(rb.velocity.y < 0 && !isOnGround && !isDashing)
+        if(rb.linearVelocity.y < 0 && !isOnGround && !isDashing)
         {
             rb.gravityScale = gravityScaleValue * gravityScaleMultiplier;
         }
@@ -175,7 +175,7 @@ public class PlayerMove : MonoBehaviour
         
         if(hit.collider != null)
         {
-             Debug.Log("onGround!");
+            //Debug.Log("onGround!");
             lastGroundTime = coyoteTime;
             return true;
         }
@@ -232,9 +232,9 @@ public class PlayerMove : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-        rb.velocity = Vector2.right * faceDir * (onBeat ? superDashForce : normalDashForce);
+        rb.linearVelocity = Vector2.right * faceDir * (onBeat ? superDashForce : normalDashForce);
         yield return new WaitForSeconds(dashGap);
-        rb.velocity = new Vector2(0, rb.velocity.y);
+        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         isDashing = false;
 
         if(!onBeat)
@@ -246,6 +246,6 @@ public class PlayerMove : MonoBehaviour
     private void OnDisable() 
     {
         
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
     }
 }
