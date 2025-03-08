@@ -38,8 +38,8 @@ public class PlayerMeleeAttack : MonoBehaviour
         {
             if(Input.GetMouseButtonDown(0)) //left button
             {
-                timer = MusicSyncManager.onTime ? atkCD : atkCDMultiplier * atkCD;
-                totalAtkPower = MusicSyncManager.onTime ? atkPower : atkPower * atkMissMultiplier;
+                //timer = MusicSyncManager.onTime ? atkCD : atkCDMultiplier * atkCD;
+                //totalAtkPower = MusicSyncManager.onTime ? atkPower : atkPower * atkMissMultiplier;
                 StartCoroutine(AtkZoneEnable());
             }
         }

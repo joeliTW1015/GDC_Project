@@ -32,7 +32,7 @@ public class EnemyBasic : MonoBehaviour
             StartCoroutine(HitCDStart());
             hp -= playerMeleeAttack.totalAtkPower;
             hpBar.UpdateBar(maxHp, hp);
-            if(MusicSyncManager.onTime)
+            /*if(MusicSyncManager.onTime)
             {
                 Vector2 knockBackDir;
                 if(other.transform.position.x > transform.position.x)
@@ -44,7 +44,7 @@ public class EnemyBasic : MonoBehaviour
                     knockBackDir = new Vector2(1, 1);
                 }
                 rb.AddForce(knockBackDir * knockBackPower, ForceMode2D.Impulse);
-            }
+            }*/
             
 
             if(hp <= 0)

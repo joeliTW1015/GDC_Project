@@ -14,7 +14,7 @@ public class Indicator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(MusicSyncManager.onTime)
+        /*if(MusicSyncManager.onTime)
         {
             spriteRenderer.color = Color.red;
 
@@ -22,6 +22,6 @@ public class Indicator : MonoBehaviour
         else
         {
             spriteRenderer.color = Color.white;
-        }
+        }*/
     }
 }

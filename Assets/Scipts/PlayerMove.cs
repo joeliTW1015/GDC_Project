@@ -71,7 +71,7 @@ public class PlayerMove : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
-            StartCoroutine(Dash(MusicSyncManager.onTime));
+            //StartCoroutine(Dash(MusicSyncManager.onTime));
         }
 
         xIn = Input.GetAxis("Horizontal");
@@ -142,7 +142,7 @@ public class PlayerMove : MonoBehaviour
             jumpCount = 0;
         }
 
-        if((lastGroundTime > 0 && lastJumpTime > 0 )||(MusicSyncManager.onTime && jumpCount < maxMultiJump && lastJumpTime > 0))
+        /*if((lastGroundTime > 0 && lastJumpTime > 0 )||(MusicSyncManager.onTime && jumpCount < maxMultiJump && lastJumpTime > 0))
         {
             jumpCount += 1;
             Debug.Log("Jump");
@@ -150,7 +150,7 @@ public class PlayerMove : MonoBehaviour
             lastGroundTime = 0;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-        }
+        }*/
         
 
         //JumpCut

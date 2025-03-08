@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MusicSyncManager : MonoBehaviour
 {
-    public static bool onTime; 
+    public static event System.Action onTime; 
     AudioSource audioSource;
     [SerializeField] float bpm;
     [SerializeField] float maxError;
@@ -35,11 +35,8 @@ public class MusicSyncManager : MonoBehaviour
 
         if(Mathf.Abs(timer - beatTime) < maxError || Mathf.Abs(timer - preBeatTime) < maxError)  
         {
-            onTime = true;
+            onTime?.Invoke();
         }
-        else
-        {
-            onTime = false;
-        }
+        
     }
 }
