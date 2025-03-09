@@ -51,6 +51,9 @@ TagManager:
   - name: FG
     uniqueID: 2860913745
     locked: 0
+  - name: HUD
+    uniqueID: 1170247231
+    locked: 0
   - name: UI
     uniqueID: 3939746997
     locked: 0

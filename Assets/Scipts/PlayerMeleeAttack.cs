@@ -40,7 +40,7 @@ public class PlayerMeleeAttack : MonoBehaviour
             {
                 //timer = MusicSyncManager.onTime ? atkCD : atkCDMultiplier * atkCD;
                 //totalAtkPower = MusicSyncManager.onTime ? atkPower : atkPower * atkMissMultiplier;
-                StartCoroutine(AtkZoneEnable());
+                //StartCoroutine(AtkZoneEnable());
             }
         }
         else
